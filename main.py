@@ -24,17 +24,20 @@ userform = """
         </style>
     </head>
     <body>
+        <style>
+            .error {{color:red;}}
+        </style>
         <form action="/signup" method="post">
          
             <label for="username">User Name: </label>
-            <input type="text" id="username" name="username" value="" /><br />
+            <input type="text" id="username" name="username" value='{username}' /><br />
             <textarea name="text">{0}</textarea><br />
             <label for="pw1">Password: </label>
-            <input type="password" id="pw1" name="pw1" value="" /><br />
+            <input type="password" id="pw1" name="pw1" value='{pw1}' /><br />
             <label for="pw2">Confirm Password: </label>
-            <input type="password" id="pw2" name="pw2" value="" /><br />
+            <input type="password" id="pw2" name="pw2" value='{pw2}' /><br />
             <label for="email">Email (Optional): </label>
-            <input type="email" id="email" name="email" value="" /><br />
+            <input type="email" id="email" name="email" value='{email}' /><br />
             <button type="submit" value="submit">Submit</button>
            
         </form>
