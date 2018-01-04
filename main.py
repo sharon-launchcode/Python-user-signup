@@ -31,7 +31,6 @@ form = """
          
             <label for="username">User Name: </label>
             <input type="text" id="username" name="username" value='{username}' /><br />
-            <textarea name="text">{0}</textarea><br />
             <label for="pw1">Password: </label>
             <input type="password" id="pw1" name="pw1" value='{pw1}' /><br />
             <label for="pw2">Confirm Password: </label>
@@ -47,10 +46,9 @@ form = """
 </html>
 """
 
-@app.route('/')
+@app.route('/validate-input')
 
-def validate_pw ():
-    return form
-    #return form.format(pw1='', pw2='', pwerror='', email='', emailerror='')
+def display_input_form ():
+    return form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
 
 app.run()
