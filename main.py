@@ -47,6 +47,12 @@ signupform = """
 </html>
 """
 
+@app.route('/test')
+def test():
+   dict = {'phy':50,'che':60,'maths':70}
+   return render_template('test.html', result = dict)
+
+
 @app.route('/')
 
 def validate_pw ():
