@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-form = """
+signupform = """
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,10 +47,17 @@ form = """
 </html>
 """
 
+@app.route('/test')
+def test():
+   dict = {'phy':50,'che':60,'maths':70}
+   return render_template('test.html', result = dict)
+
+
 @app.route('/')
 
 def validate_pw ():
-    return form
-    #return form.format(pw1='', pw2='', pwerror='', email='', emailerror='')
+    #return signupform
+    return render_template('test.html', name='Sharon')
+    #return signupform.format(pw1='', pw2='', pwerror='', email='', emailerror='')
 
 app.run()
