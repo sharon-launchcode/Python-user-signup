@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-form = """
+input_form = """
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +27,7 @@ form = """
         <style>
             .error {{color:red;}}
         </style>
-        <form action="/signup" method="post">
+        <form action="/validate-input" method="post">
          
             <label for="username">User Name: </label>
             <input type="text" id="username" name="username" value='{username}' /><br />
@@ -49,6 +49,29 @@ form = """
 @app.route('/validate-input')
 
 def display_input_form ():
-    return form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
+    return input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
+
+def is_integer(num):
+    try:
+       int(num)
+       return True
+    except ValueError:   
+       return False
+
+@app.route('/validate-input', methods=['POST'])
+def validate_pw():
+    pw1 = request.form['pw1']
+    pw2 = request.form['pw2']
+
+    pw_error = ''
+    email_error = ''
+
+    if not is_integer(pw1):
+        pw_error = 'pw1 Not an integer'
+    else:
+        pw1 =  int(pw1)
+        if pw1 >  23 or pw1 < 0:
+            pw_error = 'pw1 Out of range'
+    return pw_error
 
 app.run()
