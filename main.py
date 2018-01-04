@@ -47,9 +47,10 @@ signupform = """
 </html>
 """
 
-@app.route('/validate-pw')
+@app.route('/')
 
 def validate_pw ():
-    return signupform.format(pw1='', pw2='', pwerror='', email='', emailerror='')
+    return signupform
+    #return signupform.format(pw1='', pw2='', pwerror='', email='', emailerror='')
 
 app.run()
