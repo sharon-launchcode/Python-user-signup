@@ -63,15 +63,28 @@ def validate_pw():
     pw1 = request.form['pw1']
     pw2 = request.form['pw2']
 
+    pw1_error = ''
+    pw2_error = ''
     pw_error = ''
     email_error = ''
 
     if not is_integer(pw1):
-        pw_error = 'pw1 Not an integer'
+        pw1_error = 'pw1 Not an integer'
     else:
         pw1 =  int(pw1)
         if pw1 >  23 or pw1 < 0:
-            pw_error = 'pw1 Out of range'
+            pw1_error = 'pw1 Out of range'
+    if not is_integer(pw2):
+        pw2_error = 'pw2 Not an integer'
+    else:
+        pw2 = pw2 = int(pw2)
+        if pw2 > 23 or pw2 < 0:
+            pw2_error = 'pw2 Out of range'
+    if pw1 != pw2:
+        pw_error = 'match'
+    else:
+        pw_error = 'no match'    
+    
     return pw_error
 
 app.run()
