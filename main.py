@@ -91,6 +91,6 @@ def validate_pw():
     else:
         #return input_form.format(pw_error=pw_error, username=username)
         #last working 5 Jan
-        return input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
+        return input_form, input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
         #return render_template('index.html', input_form.format(pw_error=pw_error, username=username))
 app.run()
