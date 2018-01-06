@@ -89,6 +89,8 @@ def validate_pw():
     if not pw1_error and not pw2_error: 
         return 'yes'
     else:
-        return input_form.format(pw_error=pw_error, username=username)
-        #last working 5 Jan 
+        #return input_form.format(pw_error=pw_error, username=username)
+        #last working 5 Jan
+        return ('/validate-input', input_form.format(pw_error=pw_error, pw1=pw1, username=username))
+        #return render_template('index.html', input_form.format(pw_error=pw_error, username=username))
 app.run()
