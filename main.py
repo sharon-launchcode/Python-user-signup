@@ -36,6 +36,7 @@ input_form = """
             <p id="pw1_error" class="error">{pw1_error}</p>
             <label for="pw2">Confirm Password: </label>
             <input type="password" id="pw2" name="pw2" value='{pw2}' /><br />
+            <p id="pw2_error" class="error">{pw2_error}</p>
             <p id="pwerror" class="error">{pw_error}</p>
             <label for="email">Email (Optional): </label>
             <input type="email" id="email" name="email" value='{email}' /><br />
@@ -50,7 +51,7 @@ input_form = """
 @app.route('/validate-input')
 
 def display_input_form ():
-    return input_form.format(username='', pw1='', pw1_error=pw1_error, pw2='', pw_error='', email='', email_error='')
+    return input_form.format(username='', pw1='', pw1_error='', pw2='', pw2_error='', pw_error='', email='', email_error='')
 
 def is_integer(num):
     try:
@@ -85,16 +86,13 @@ def validate_pw():
         if pw2 > 23 or pw2 < 0:
             pw2_error = 'pw2 Out of range'
     if pw1 == pw2:
-        pw_error = 'Good job!  The passwords match'
+        pw_match = 'Good job!  The passwords match'
     else:
         pw_error = 'The passwords do not match'
-    if not pw1_error and not pw2_error:
+    if not pw1_error and not pw2_error and not pw_error:
         return welcome 
         #return input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
     else:
-        #return username
-        #return input_form.format(pw_error=pw_error, username=username)
-        #last working 5 Jan
-        return input_form.format(username=username, pw1=pw1, pw1_error=pw1_error, pw2=pw2, pw_error=pw_error, email=email, email_error=email_error)
-        #return render_template('index.html', input_form.format(pw_error=pw_error, username=username))
+        return input_form.format(username=username, pw1=pw1, pw1_error=pw1_error, pw2=pw2, pw2_error=pw2_error, pw_error=pw_error, email=email, email_error=email_error)
+
 app.run()
