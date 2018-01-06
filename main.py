@@ -84,9 +84,9 @@ def validate_pw():
         if pw2 > 23 or pw2 < 0:
             pw2_error = 'pw2 Out of range'
     if pw1 == pw2:
-        pw_error = 'match'
+        pw_error = 'Good job!  The passwords match'
     else:
-        pw_error = 'no match'
+        pw_error = 'The passwords do not match'
     if not pw1_error and not pw2_error:
         return welcome 
         #return input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
@@ -94,6 +94,6 @@ def validate_pw():
         #return username
         #return input_form.format(pw_error=pw_error, username=username)
         #last working 5 Jan
-        return input_form.format(username='', pw1='', pw2='', pw_error=pw_error, email='', email_error='')
+        return input_form.format(username=username, pw1=pw1, pw2=pw2, pw_error=pw_error, email=email, email_error=email_error)
         #return render_template('index.html', input_form.format(pw_error=pw_error, username=username))
 app.run()
