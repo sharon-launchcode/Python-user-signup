@@ -64,6 +64,7 @@ def validate_pw():
     pw2 = request.form['pw2']
     username = request.form['username']
     email = request.form['email']
+    welcome = ('welcome' + username)
 
     pw1_error = ''
     pw2_error = ''
@@ -86,10 +87,11 @@ def validate_pw():
         pw_error = 'match'
     else:
         pw_error = 'no match'
-    if not pw1_error and not pw2_error: 
-        return input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
+    if not pw1_error and not pw2_error:
+        return welcome 
+        #return input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
     else:
-        return 'ntr'
+        return username
         #return input_form.format(pw_error=pw_error, username=username)
         #last working 5 Jan
         #return input_form, input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
