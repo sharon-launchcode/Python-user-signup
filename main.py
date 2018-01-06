@@ -33,6 +33,7 @@ input_form = """
             <input type="text" id="username" name="username" value='{username}' /><br />
             <label for="pw1">Password: </label>
             <input type="password" id="pw1" name="pw1" value='{pw1}' /><br />
+            <p id="pw1_error" class="error">{pw1_error}</p>
             <label for="pw2">Confirm Password: </label>
             <input type="password" id="pw2" name="pw2" value='{pw2}' /><br />
             <p id="pwerror" class="error">{pw_error}</p>
@@ -49,7 +50,7 @@ input_form = """
 @app.route('/validate-input')
 
 def display_input_form ():
-    return input_form.format(username='', pw1='', pw2='', pw_error='', email='', email_error='')
+    return input_form.format(username='', pw1='', pw1_error=pw1_error, pw2='', pw_error='', email='', email_error='')
 
 def is_integer(num):
     try:
@@ -94,6 +95,6 @@ def validate_pw():
         #return username
         #return input_form.format(pw_error=pw_error, username=username)
         #last working 5 Jan
-        return input_form.format(username=username, pw1=pw1, pw2=pw2, pw_error=pw_error, email=email, email_error=email_error)
+        return input_form.format(username=username, pw1=pw1, pw1_error=pw1_error, pw2=pw2, pw_error=pw_error, email=email, email_error=email_error)
         #return render_template('index.html', input_form.format(pw_error=pw_error, username=username))
 app.run()
