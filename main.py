@@ -1,4 +1,9 @@
 from flask import Flask, render_template, redirect, request
+import cgi
+import os
+import jinja2
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -100,11 +105,12 @@ def validate_pw():
         return input_form.format(username=username, pw1=pw1, pw1_error=pw1_error, pw2=pw2, pw2_error=pw2_error, pw_error=pw_error, email=email, email_error=email_error)
 
 
+
 @app.route('/welcome.html', methods=['GET','POST'])
 def welcome_message():
     username = 'Fred'
-    #username = request.form['username']
-    username = request.args.get('username')
+    # this returns bad request username = request.form['username']
+    username = request.args.get('username') #changes Fred to username
     return render_template('/welcome.html', username=username)
 
 app.run()
