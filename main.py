@@ -95,7 +95,7 @@ def validate_pw():
         pw_error = 'The passwords do not match'
     if not pw1_error and not pw2_error and not pw_error:
         #return welcome
-        username = request.form['username']
+        #username = request.form['username']
         return redirect('/welcome.html?username={username}') 
         
     else:
@@ -105,6 +105,7 @@ def validate_pw():
 @app.route('/welcome.html')
 def welcome_message():
     username = request.args.get('username')
-    return ('<h1>Welcome</h1>' + username)
+    
+    return '<h1>Welcome</h1>'
 
 app.run()
