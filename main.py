@@ -31,12 +31,15 @@ input_form = """
          
             <label for="username">User Name: </label>
             <input type="text" id="username" name="username" value='{username}' /><br />
+            <p id="empty_username" class="error">{empty_username}</p>
             <label for="pw1">Password: </label>
             <input type="password" id="pw1" name="pw1" value='{pw1}' /><br />
+            <p id="empty_pw1" class="error">{empty_pw1}</p>
             <p id="pw1_error" class="error">{pw1_error}</p>
             <label for="pw2">Confirm Password: </label>
             <input type="password" id="pw2" name="pw2" value='{pw2}' /><br />
             <p id="pw2_error" class="error">{pw2_error}</p>
+            <p id="empty_pw2" class="error">{empty_pw2}</p>
             <p id="pwerror" class="error">{pw_error}</p>
             <label for="email">Email (Optional): </label>
             <input type="email" id="email" name="email" value='{email}' /><br />
@@ -51,7 +54,7 @@ input_form = """
 @app.route('/validate-input')
 
 def display_input_form ():
-    return input_form.format(username='', pw1='', pw1_error='', pw2='', pw2_error='', pw_error='', email='', email_error='')
+    return input_form.format(username='', empty_username='', pw1='', empty_pw1='', pw1_error='', pw2='', empty_pw2='', pw2_error='', pw_error='', email='', email_error='')
 
 def is_integer(num):
     try:
