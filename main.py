@@ -104,6 +104,7 @@ def validate_pw():
 def welcome_message():
     username = 'Fred'
     #username = request.form['username']
+    username = request.args.get('username')
     return render_template('/welcome.html', username=username)
 
 app.run()
