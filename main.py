@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -94,9 +94,15 @@ def validate_pw():
     else:
         pw_error = 'The passwords do not match'
     if not pw1_error and not pw2_error and not pw_error:
-        return welcome 
+        #return welcome 
+        return redirect('/welcome.html') 
         
     else:
         return input_form.format(username=username, pw1=pw1, pw1_error=pw1_error, pw2=pw2, pw2_error=pw2_error, pw_error=pw_error, email=email, email_error=email_error)
+
+
+@app.route('/welcome')
+def welcome_message():
+   return welcome
 
 app.run()
