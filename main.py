@@ -34,7 +34,13 @@ def empty_fields():
     template = jinja_env.get_template('hello_form.html')
     return template.render(empty_username=empty_username, empty_pw1=empty_pw1, empty_pw2=empty_pw2)  
 
-        
+def pw_mismatch():
+    pw1 = request.form['pw1']
+    pw2 = request.form['pw2']
+    if pw1 != pw2:
+        pw_error = "mismatch"
+    else:
+        pw_error = ''          
 
 @app.route("/hello", methods=['POST'])
 def hello():
