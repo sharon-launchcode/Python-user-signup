@@ -37,10 +37,6 @@ user_input = """
 </html>
 
 """
-@app.route('/validate-input')
-def display_input_form():
-    return input_form.format(username='', email='',
-        pw1='', pw2='')
 
 @app.route("/")
 def index():
@@ -57,12 +53,17 @@ def empty_fields():
     username = request.form['username']
     pw1 = request.form['pw1']
     pw2 = request.form['pw2']
+    empty_username = ''
+    empty_pw1 =''
+    empty_pw1 =''
     if not username:
         empty_username = "A user name is required"
     if not pw1:
         empty_pw1 = "A password must be supplied" 
     if not pw2:
-        empty_pw2 = "A password must be supplied"     
+        empty_pw2 = "A password must be supplied" 
+    template = jinja_env.get_template('hello_form.html')
+    return template.render(empty_username=empty_username, empty_pw1=empty_pw1, empty_pw2=empty_pw2)  
 
 def return_errors():
     if not pw1_error and not pw2_error and not pw_error:
