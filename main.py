@@ -15,6 +15,12 @@ def index():
     template = jinja_env.get_template('hello_form.html')
     return template.render()
 
+def empty_user():
+    user_name = request.form['username']
+    email = request.form['email']
+    template = jinja_env.get_template('hello_form.html')
+    return template.render(user=user_name, email=email)
+
 @app.route("/hello", methods=['POST'])
 def hello():
     first_name = request.form['first_name']
