@@ -15,11 +15,18 @@ def index():
     template = jinja_env.get_template('hello_form.html')
     return template.render()
 
-def empty_user():
+def save_input():
     user_name = request.form['username']
     email = request.form['email']
     template = jinja_env.get_template('hello_form.html')
     return template.render(user=user_name, email=email)
+
+def empty_fields():
+    username = request.form['username']
+    pw1 = request.form['pw1']
+    pw2 = request.form['pw2']
+    if not username:
+        empty_username = "A user name is required"
 
 @app.route("/hello", methods=['POST'])
 def hello():
