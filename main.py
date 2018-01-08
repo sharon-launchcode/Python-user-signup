@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, request
-from flask import Flask, request, redirect
 import cgi
 import os
 import jinja2
@@ -10,16 +9,18 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), a
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
+
 @app.route("/")
 def index():
     template = jinja_env.get_template('hello_form.html')
     return template.render()
 
 def save_input():
-    user_name = request.form['username']
+    username = request.form['username']
     email = request.form['email']
     template = jinja_env.get_template('hello_form.html')
-    return template.render(user=user_name, email=email)
+    return template.render(user=username, email=email)
+
 
 def empty_fields():
     username = request.form['username']
@@ -39,14 +40,16 @@ def pw_mismatch():
     pw2 = request.form['pw2']
     if pw1 != pw2:
         pw_error = "mismatch"
-    else:
-        pw_error = ''          
+    template = jinja_env.get_template('hello_form.html')
+    return template.render(pw_error=pw_error)  
+
 
 @app.route("/hello", methods=['POST'])
 def hello():
     first_name = request.form['first_name']
     template = jinja_env.get_template('hello_greeting.html')
     return template.render(name=first_name)
+
 
 
 app.run()
