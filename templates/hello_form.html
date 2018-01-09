@@ -1,30 +1,31 @@
-<!doctype html>
-<head>
-    <style>
-    .error {color:red;}
-    
-    </style>
-</head>
-<html>
-    <body>
-        <form action="/hello" method="post">
-            <label for="first-name">First Name:</label>
-            <input id="first-name" type="text" name="first_name" />
-            <label for="username">User Name: </label>
-            <input type="text" id="username" name="username" value='{{username}}' /><br />
-            <p id="empty_username" class="error">{{empty_username}}</p>
-            <label for="pw1">Password: </label>
-            <input type="password" id="pw1" name="pw1" value='{{pw1}}' /><br />
-            <p id="empty_pw1" class="error">{{empty_pw1}}</p>
-            <p id="pw1_error" class="error">{{pw1_error}}</p>
-            <label for="pw2">Confirm Password: </label>
-            <input type="password" id="pw2" name="pw2" value='{{pw2}}' /><br />
-            <p id="pw2_error" class="error">{{pw2_error}}</p>
-            <p id="empty_pw2" class="error">{{empty_pw2}}</p>
-            <p id="pwerror" class="error">{{pw_error}}</p>
-            <label for="email">Email (Optional): </label>
-            <input type="email" id="email" name="email" value='{{email}}'/><br />
-            <input type="submit" />
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action = "" method="POST">
+  <label>
+    Username
+    <input type="text" name="username" value='{{username}}'/>
+    <p class="error">{{username_error}}</p>
+  </label>
+  <label>
+    Password
+    <input type="password" name="pw1"/>
+    <p class="error">{{pw1_error}}</p>
+    <p class="error">{{pw_error}}</p>
+  </label>
+  <label>
+    Verify Password
+    <input type="password" name="pw2"/>
+    <p class="error">{{pw2_error}}</p>
+    <p class="error">{{pw_error}}</p>
+  </label>
+  <label>
+    Email (Optional)
+    <input type="text" name="email" value='{{email}}'/>
+    <p class="error">{{email_error}}</p>
+  </label>
+  <input type="submit" value="Sign Up"/>
+</form>
+
+{% endblock %}
