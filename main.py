@@ -10,6 +10,7 @@ app.config['DEBUG'] = True
 def index():
     return render_template('hello_form.html')
 
+@app.route("/", methods=['POST'])
 def empty_fields():
     username = request.form['username']
     pw1 = request.form['pw1']
@@ -22,6 +23,7 @@ def empty_fields():
         empty_pw2 = "A password must be supplied" 
     return render_template('hello_form.html', empty_username=empty_username, empty_pw1=empty_pw1, empty_pw2=empty_pw2)  
 
+@app.route("/", methods=['POST'])
 def pw_mismatch():
     pw1 = request.form['pw1']
     pw2 = request.form['pw2']
