@@ -60,9 +60,9 @@ def validate_fields():
     if username == "":
         username_error = 'Username must be more than 3 characters but no more than 20'
     if pw1 == "":
-        pw1_error = 'Password must contain more than 3 character but no more than 20'
+        pw1_error = 'Your first password field was left empty. Set a password, no fewer than 3 and no longer than 20 characters'
     if pw2 == "":
-        pw2_error = 'Passwords do not match'
+        pw2_error = 'Your second password field was left empty. Enter a password to match the one above, no fewer than 3 and no longer than 20 characters'
 
 
     if not username_error and not pw1_error and not pw2_error and not email_error:
