@@ -34,25 +34,26 @@ def validate_fields():
         username = username
     #https://www.infoworld.com/article/2655121/security/password-size-does-matter.html
     #https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password
-    if 50 < len(pw1) < 14:
+    if 20 < len(pw1) < 3:
         pw1 = ''
-        pw1_error = 'Password must contain more than 14 characters long, 50 max'
+        pw1_error = 'Password must contain more than 3characters long, 20 max, minimum 14 recommended'
 
-    if 50 < len(pw2) < 14:
+    if 20 < len(pw2) < 3:
         pw2 = ''
-        pw2_error = 'Password must contain more than 14 characters long, 50 max'    
+        pw2_error = 'Verification password must contain more than 3 characters long, 20 max, minimum 14 recommended'    
 
     if pw1 != pw2:
         pw1 = ''
         pw2 = ''
         pw_error = 'Passwords do not match'
 
+    #Criteria for email are that it has a single @, a single ., contains no spaces, and is between 3 and 20 characters long
     if len(email) > 0:
-        if not(email.endswith('@') or email.startswith('@') or email.endswith('.') or email.startswith('.')) and email.count('@') == 1:
+        if not(email.endswith('@') or email.startswith('@') or email.endswith('.') or email.startswith('.')) and email.count('@') == 1 and email.count('.') == 1:
             email=email
         else:
             email = ''
-            email_error = 'Improperly formed email  -- it must contain an @ sign'
+            email_error = 'Improperly formed email  -- it must contain an @ sign, only one period, and is between 3 and 20 characters long'
     else:
         email = ''
 
