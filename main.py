@@ -72,11 +72,11 @@ def validate_fields():
         pw2_error = 'Enter a password to match the one above, no fewer than 3 and no longer than 20 characters'
 
 
-    if not username_error and not pw1_error and not pw2_error and not email_error:
+    if not username_error and not pw_error and not pw1_error and not pw2_error and not email_error:
         return render_template('hello_greeting.html', username = username)
 
     else:
-        return render_template('hello_form.html', username_error=username_error, pw1_error=pw1_error, pw2_error=pw2_error, email_error=email_error,
+        return render_template('hello_form.html', pw_error=pw_error, username_error=username_error, pw1_error=pw1_error, pw2_error=pw2_error, email_error=email_error,
         username=username, pw1=pw1, pw2=pw2, email=email)
 
 app.run()
