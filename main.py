@@ -10,7 +10,6 @@ app.config['DEBUG'] = True
 def index():
     return render_template('hello_form.html')
 
-
 @app.route("/", methods=['POST'])
 def validate_fields():
     username = request.form["username"]
