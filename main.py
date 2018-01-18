@@ -39,7 +39,15 @@ def validate_fields():
 
     if len(pw2) < 3:
         pw2 = pw2
-        pw2_error = 'Verification password must contain more than 3 characters long, 20 max, minimum 14 recommended'    
+        pw2_error = 'Verification password must contain more than 3 characters long, 20 max, minimum 14 recommended' 
+
+    if len(pw1) > 20:
+        pw1 = pw1
+        pw1_error = 'Password is too long, 20 max, minimum 14 recommended'
+
+    if len(pw2) > 20:
+        pw2 = pw2
+        pw2_error = 'Verification password is too long, 20 max, minimum 14 recommended'    
 
     if pw1 != pw2:
         pw1 = pw1
